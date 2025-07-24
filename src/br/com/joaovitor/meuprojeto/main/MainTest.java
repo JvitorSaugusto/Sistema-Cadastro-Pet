@@ -51,6 +51,36 @@ public class MainTest {
                             System.out.println("Qual a Rua?");
                             String rua = scanner.nextLine();
                             resposta = numeroConvertido + "," + rua + "," + cidade;
+
+                        } else if (i == 4) {
+                            String idadeInput = scanner.nextLine();
+                            if (idadeInput.trim().isEmpty()){
+                                resposta = "NÃO INFORMADO";
+                            }
+                            Double idade = Double.parseDouble(idadeInput);
+                            if (idade > 20 || idade < 0.5) {
+                                throw new IllegalArgumentException("Argumento ilegal, não pode ser mais que 20");
+                            } else if (idade <= 20) {
+                                System.out.println("A idade sera em meses ou anos?");
+                                String inputIdade = scanner.nextLine().toLowerCase();
+                                if (inputIdade.equals("meses")) {
+                                    idade /= 12.0;
+                                    resposta = String.valueOf(idade);
+                                } else if (inputIdade.equals("anos")){
+                                    resposta = String.valueOf(idade);
+                                } else{
+                                    System.out.println("Selecione uma opção válida.");
+                                    continue;
+                                }
+                            }
+                            
+                        } else if (i == 5) {
+                            double peso = scanner.nextInt();
+                            if (peso < 1 && peso > 0.5) {
+
+                            } else if (peso > 60 || peso < 0.5) {
+                                throw new IllegalArgumentException("Argumento ilegal, não pode ser maior que 60 kg e menos que 0.5 kg");
+                            }
                         } else {
                             resposta = scanner.nextLine().trim();
                         }
@@ -67,8 +97,6 @@ public class MainTest {
                 } else if (opcaoMenuParse == 6) {
                     break;
                 }
-
-
             } catch (NumberFormatException e) {
                 System.out.println("Error" + e.getMessage());
             }
