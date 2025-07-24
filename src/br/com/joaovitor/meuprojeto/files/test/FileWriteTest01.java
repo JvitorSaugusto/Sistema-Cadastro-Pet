@@ -13,7 +13,7 @@ public class FileWriteTest01 {
 
         File file = new File("formulario.txt");
         try (FileWriter fw = new FileWriter(file);
-             BufferedWriter bw = new BufferedWriter(fw);) {
+             BufferedWriter bw = new BufferedWriter(fw)) {
             escreverPulandoLinha(perguntas, bw);
             bw.flush();
         } catch (IOException e) {
