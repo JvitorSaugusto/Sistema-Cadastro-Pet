@@ -5,12 +5,13 @@ import java.util.regex.Pattern;
 
 public class Pet {
     String nome;
-
+    TipoPet tipoPet;
     SexoPet sexoPet;
     //endereço
     int idade;
     double peso;
-    TipoPet tipoPet;
+    String raca;
+
 
     public Pet() {
     }
