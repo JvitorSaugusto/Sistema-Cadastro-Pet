@@ -2,11 +2,8 @@ package br.com.joaovitor.meuprojeto.main;
 
 import br.com.joaovitor.meuprojeto.files.test.FileReadingTest01;
 import br.com.joaovitor.meuprojeto.files.test.FileWriteTest01;
-import br.com.joaovitor.meuprojeto.pets.domain.Pet;
 
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class MainTest {
     public static void main(String[] args) {
@@ -22,33 +19,49 @@ public class MainTest {
         while (opcaoMenuParse != 6) {
             String opcaoMenu = scanner.next();
             scanner.nextLine();
+            String resposta = "";
 
             try {
                 opcaoMenuParse = Integer.parseInt(opcaoMenu);
                 if (opcaoMenuParse == 1) {
                     Map<String, String> map = new HashMap<>();
-                    //verificar pra deixar isso com tamanho dinamico
-                    List<String> chaveRespostas = new ArrayList<>(Arrays.asList("nome", "tipo", "sexo", "endereco", "idade", "peso", "raca"));
+                    List<String> chaveMap = new ArrayList<>();
                     List<String> perguntas = FileReadingTest01.Reading();
+                    List<String> respostas = new ArrayList<>();
 
                     for (int i = 0; i < perguntas.size(); i++) {
                         System.out.println(perguntas.get(i));
-                        String resposta = scanner.nextLine();
-                        if (i == 2){
+                        if (i == 2) {
+                            // dps transformar em um metodo "perguntarSexo"
+                            System.out.println("Digite: MACHO ou FEMEA");
+                            resposta = scanner.nextLine().trim().toUpperCase();
                             if (!resposta.equals("MACHO") && !resposta.equals("FEMEA")) {
                                 System.out.println("ERRO: Valor invalido");
-                                //verificar essa parte pro loop voltar na pergunta
-                                break;
+                                i--;
+                                continue;
                             }
+                        } else if (i == 3) {
+                            // dps transformar em um metodo "perguntarEndereço"
+                            System.out.println("Qual o Número da casa?");
+                            int numero = scanner.nextInt();
+                            String numeroConvertido = Integer.toString(numero);
+                            // tentar validar se cidade contem apenas letras, validar com regex
+                            System.out.println("Qual a Cidade?");
+                            String cidade = scanner.nextLine();
+                            System.out.println("Qual a Rua?");
+                            String rua = scanner.nextLine();
+                            resposta = numeroConvertido + "," + rua + "," + cidade;
+                        } else {
+                            resposta = scanner.nextLine().trim();
                         }
-                        map.put(chaveRespostas.get(i), resposta);
+                        chaveMap.add(Integer.toString(i));
+                        map.put(chaveMap.get(i), resposta);
                     }
-                        for (String valor: map.values()){
-                            System.out.println(valor);
-                        }
+                    System.out.println("Inserindo respostas na lista");
+                    respostas.addAll(map.values());
 
                 } else if (opcaoMenuParse == 2) {
-                    System.out.println("Digitou 2");
+                    System.out.println("...");
                 } else if (opcaoMenuParse <= 0) {
                     System.out.println("Digite somente numeros válidos");
                 } else if (opcaoMenuParse == 6) {
