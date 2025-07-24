@@ -2,15 +2,15 @@ package br.com.joaovitor.meuprojeto.main;
 
 import br.com.joaovitor.meuprojeto.files.test.FileReadingTest01;
 import br.com.joaovitor.meuprojeto.files.test.FileWriteTest01;
+import br.com.joaovitor.meuprojeto.pets.domain.Pet;
 
-import java.util.Scanner;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class MainTest {
     public static void main(String[] args) {
         FileWriteTest01.writing();
-        FileReadingTest01.Reading();
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Bem vindo ao menu, escolha uma das opções abaixo:");
@@ -21,12 +21,32 @@ public class MainTest {
 
         while (opcaoMenuParse != 6) {
             String opcaoMenu = scanner.next();
+            scanner.nextLine();
 
             try {
                 opcaoMenuParse = Integer.parseInt(opcaoMenu);
-
                 if (opcaoMenuParse == 1) {
-                    System.out.println("Digitou 1");
+                    Map<String, String> map = new HashMap<>();
+                    //verificar pra deixar isso com tamanho dinamico
+                    List<String> chaveRespostas = new ArrayList<>(Arrays.asList("nome", "tipo", "sexo", "endereco", "idade", "peso", "raca"));
+                    List<String> perguntas = FileReadingTest01.Reading();
+
+                    for (int i = 0; i < perguntas.size(); i++) {
+                        System.out.println(perguntas.get(i));
+                        String resposta = scanner.nextLine();
+                        if (i == 2){
+                            if (!resposta.equals("MACHO") && !resposta.equals("FEMEA")) {
+                                System.out.println("ERRO: Valor invalido");
+                                //verificar essa parte pro loop voltar na pergunta
+                                break;
+                            }
+                        }
+                        map.put(chaveRespostas.get(i), resposta);
+                    }
+                        for (String valor: map.values()){
+                            System.out.println(valor);
+                        }
+
                 } else if (opcaoMenuParse == 2) {
                     System.out.println("Digitou 2");
                 } else if (opcaoMenuParse <= 0) {
