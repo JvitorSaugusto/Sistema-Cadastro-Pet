@@ -1,5 +1,8 @@
 package br.com.joaovitor.meuprojeto.menu.methods;
 
+import br.com.joaovitor.meuprojeto.pets.domain.Pet;
+import br.com.joaovitor.meuprojeto.utils.VerifyRegex;
+
 import java.util.Scanner;
 
 public class Submenu04 {
@@ -8,14 +11,10 @@ public class Submenu04 {
             System.out.println("Digite a idade:");
             String idadeInput = scanner.nextLine();
 
-            if (idadeInput.trim().isEmpty()) {
-                return "NÃO INFORMADO";
-            }
+            VerifyRegex.verificaSeEstaVazio(idadeInput);
 
             try {
                 Double idade = Double.parseDouble(idadeInput);
-
-
                 if (idade <= 20) {
                     while (true) {
                         System.out.println("A idade sera em meses ou anos?");

@@ -2,10 +2,7 @@ package br.com.joaovitor.meuprojeto.main;
 
 import br.com.joaovitor.meuprojeto.files.test.FileReadingTest01;
 import br.com.joaovitor.meuprojeto.files.test.FileWriteTest01;
-import br.com.joaovitor.meuprojeto.menu.methods.Submenu02;
-import br.com.joaovitor.meuprojeto.menu.methods.Submenu03;
-import br.com.joaovitor.meuprojeto.menu.methods.Submenu04;
-import br.com.joaovitor.meuprojeto.menu.methods.Submenu05;
+import br.com.joaovitor.meuprojeto.menu.methods.*;
 import br.com.joaovitor.meuprojeto.pets.domain.PetBox;
 
 import java.util.*;
@@ -34,7 +31,11 @@ public class MainTest {
 
                     for (int i = 0; i < perguntas.size(); i++) {
                         System.out.println(perguntas.get(i));
-                        if (i == 2) {
+                        if (i == 0) {
+                            resposta = Submenu00.perguntarNome(scanner);
+                        }else if (i == 1) {
+                            resposta = Submenu01.perguntarTipo(scanner);
+                        }else if (i == 2) {
                             resposta = Submenu02.perguntarSexo(scanner);
                         } else if (i == 3) {
                             resposta = Submenu03.perguntarEndereco(scanner);

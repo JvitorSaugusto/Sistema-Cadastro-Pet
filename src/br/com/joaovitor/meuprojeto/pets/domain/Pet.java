@@ -11,7 +11,7 @@ public class Pet {
     double idade;
     double peso;
     String raca;
-
+    public static final String NAO_INFORMADO = "NÃO INFORMADO";
 
     public Pet() {
     }
