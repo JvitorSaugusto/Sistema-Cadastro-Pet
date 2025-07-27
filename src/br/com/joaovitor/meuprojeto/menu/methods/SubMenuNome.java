@@ -4,7 +4,7 @@ import br.com.joaovitor.meuprojeto.utils.VerifyRegex;
 
 import java.util.Scanner;
 
-public class Submenu00 {
+public class SubMenuNome {
     public static String perguntarNome(Scanner scanner) {
         while (true) {
             try {

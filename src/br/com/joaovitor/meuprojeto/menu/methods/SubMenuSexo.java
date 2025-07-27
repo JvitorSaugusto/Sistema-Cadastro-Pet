@@ -2,7 +2,7 @@ package br.com.joaovitor.meuprojeto.menu.methods;
 
 import java.util.Scanner;
 
-public class Submenu02 {
+public class SubMenuSexo {
     public static String perguntarSexo(Scanner scanner) {
         while (true) {
             System.out.println("Digite: MACHO ou FEMEA");

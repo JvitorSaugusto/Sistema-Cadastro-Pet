@@ -1,11 +1,10 @@
 package br.com.joaovitor.meuprojeto.menu.methods;
 
-import br.com.joaovitor.meuprojeto.pets.domain.Pet;
 import br.com.joaovitor.meuprojeto.utils.VerifyRegex;
 
 import java.util.Scanner;
 
-public class Submenu05 {
+public class SubMenuPeso {
     public static String perguntaPeso(Scanner scanner){
         while (true){
             String pesoInput = scanner.nextLine();

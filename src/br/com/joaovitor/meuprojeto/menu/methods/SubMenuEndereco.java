@@ -5,7 +5,7 @@ import br.com.joaovitor.meuprojeto.utils.VerifyRegex;
 
 import java.util.Scanner;
 
-public class Submenu03 {
+public class SubMenuEndereco {
     public static String perguntarEndereco(Scanner scanner) {
         while (true) {
             System.out.println("Qual o Número da casa?");
@@ -19,8 +19,16 @@ public class Submenu03 {
             }
             System.out.println("Qual a Cidade?");
             String cidade = scanner.nextLine();
+            if (cidade.trim().isEmpty()){
+                System.out.println("O campo cidade é obrigatório!!!");
+                continue;
+            }
             System.out.println("Qual a Rua?");
             String rua = scanner.nextLine();
+            if (rua.trim().isEmpty()){
+                System.out.println("O campo rua é obrigatório!!!");
+                continue;
+            }
             return numero + "," + rua + "," + cidade;
         }
     }

@@ -1,11 +1,10 @@
 package br.com.joaovitor.meuprojeto.menu.methods;
 
-import br.com.joaovitor.meuprojeto.pets.domain.Pet;
 import br.com.joaovitor.meuprojeto.utils.VerifyRegex;
 
 import java.util.Scanner;
 
-public class Submenu04 {
+public class SubMenuIdade {
     public static String perguntaIdade(Scanner scanner) {
         while (true) {
             System.out.println("Digite a idade:");

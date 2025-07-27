@@ -2,7 +2,7 @@ package br.com.joaovitor.meuprojeto.menu.methods;
 
 import java.util.Scanner;
 
-public class Submenu01 {
+public class SubMenuTipo {
     public static String perguntarTipo(Scanner scanner){
         while (true) {
             System.out.println("Digite a opção do tipo de Pet: (1) CACHORRO\n(2) GATO\n(3) PASSARO\n(4) REPTIL");
