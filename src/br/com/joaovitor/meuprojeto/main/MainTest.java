@@ -2,6 +2,7 @@ package br.com.joaovitor.meuprojeto.main;
 
 import br.com.joaovitor.meuprojeto.files.test.FileReadingTest01;
 import br.com.joaovitor.meuprojeto.files.test.FileWriteTest01;
+import br.com.joaovitor.meuprojeto.files.test.WriterResponseFile;
 import br.com.joaovitor.meuprojeto.menu.methods.*;
 import br.com.joaovitor.meuprojeto.pets.domain.PetBox;
 
@@ -32,17 +33,17 @@ public class MainTest {
                     for (int i = 0; i < perguntas.size(); i++) {
                         System.out.println(perguntas.get(i));
                         if (i == 0) {
-                            resposta = Submenu00.perguntarNome(scanner);
+                            resposta = SubMenuNome.perguntarNome(scanner);
                         }else if (i == 1) {
-                            resposta = Submenu01.perguntarTipo(scanner);
+                            resposta = SubMenuTipo.perguntarTipo(scanner);
                         }else if (i == 2) {
-                            resposta = Submenu02.perguntarSexo(scanner);
+                            resposta = SubMenuSexo.perguntarSexo(scanner);
                         } else if (i == 3) {
-                            resposta = Submenu03.perguntarEndereco(scanner);
+                            resposta = SubMenuEndereco.perguntarEndereco(scanner);
                         } else if (i == 4) {
-                            resposta = Submenu04.perguntaIdade(scanner);
+                            resposta = SubMenuIdade.perguntaIdade(scanner);
                         } else if (i == 5) {
-                            resposta = Submenu05.perguntaPeso(scanner);
+                            resposta = SubMenuPeso.perguntaPeso(scanner);
                         } else {
                             resposta = scanner.nextLine().trim();
                         }
@@ -51,10 +52,10 @@ public class MainTest {
                     }
 
                     List<String> respostas = new ArrayList<>(mapDeRespostas.values());
-
                     System.out.println("Adicionando pets na lista");
                     PetBox.guardaPet(respostas);
-
+                    System.out.println("Salvando respostas...");
+                    WriterResponseFile.escrevendoRespostas(respostas);
                 } else if (opcaoMenuParse == 2) {
                     System.out.println("...");
                 } else if (opcaoMenuParse <= 0) {
