@@ -1,37 +1,40 @@
 package br.com.joaovitor.meuprojeto.pets.domain;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class Pet {
-    String nome;
-    TipoPet tipoPet;
-    SexoPet sexoPet;
-    String endereco;
-    double idade;
-    double peso;
-    String raca;
+    private String nome;
+    private TipoPet tipoPet;
+    private SexoPet sexoPet;
+    private String endereco;
+    private double idade;
+    private double peso;
+    private String raca;
     public static final String NAO_INFORMADO = "NÃO INFORMADO";
+
+    @Override
+    public String toString() {
+        return "Pet{" +
+                "nome='" + nome + '\'' +
+                ", tipoPet=" + tipoPet +
+                ", sexoPet=" + sexoPet +
+                ", endereco='" + endereco + '\'' +
+                ", idade=" + idade + " anos" +
+                ", peso=" + peso + " kg" +
+                ", raca='" + raca + '\'' +
+                '}';
+    }
 
     public Pet() {
     }
 
+    public String getTodosAtributos(){
+        return (nome + " - " + tipoPet + " - " + sexoPet + " - " + endereco + " - " + idade + " anos" + " - " + peso + " kg"+ " - " + raca).toLowerCase();
+    }
     public String getNome() {
         return nome;
     }
 
     public void setNome(String nome) {
-        // isso aqui pode virar um metodo para verificar se contém somente letras
-        String regex = "[a-zA-Z]";
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(nome);
-        Boolean matcherCheck = matcher.find();
-
-        if (matcherCheck){
-            this.nome = nome;
-        } else {
-            throw new RuntimeException();
-        }
+        this.nome = nome;
     }
 
     public void setTipoPet(TipoPet tipoPet) {
@@ -56,5 +59,29 @@ public class Pet {
 
     public void setEndereco(String endereco) {
         this.endereco = endereco;
+    }
+
+    public TipoPet getTipoPet() {
+        return tipoPet;
+    }
+
+    public SexoPet getSexoPet() {
+        return sexoPet;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public double getIdade() {
+        return idade;
+    }
+
+    public double getPeso() {
+        return peso;
+    }
+
+    public String getRaca() {
+        return raca;
     }
 }
