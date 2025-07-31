@@ -12,6 +12,14 @@ public class WriterResponseFile {
     public static void escrevendoRespostas(List<String> respostas) {
         File fileDiretorio = new File("petsCadastrados");
         File file = new File(fileDiretorio, geradorNomeDinamico(respostas.getFirst()));
+        if (!fileDiretorio.exists()){
+            boolean isDiretorioExist = fileDiretorio.mkdir();
+            if (isDiretorioExist){
+                System.out.println("Diretório petsCadastrados foi criado com sucesso!");
+            }else {
+                System.err.println("Erro: Diretório não foi criado!!!");
+            }
+        }
         try {
             boolean isFileCreated = file.createNewFile();
             System.out.println(isFileCreated);
@@ -29,9 +37,11 @@ public class WriterResponseFile {
     }
 
     public static String geradorNomeDinamico(String nomeCompleto) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
         String localDateTimeBR = LocalDateTime.now().format(formatter);
-        return localDateTimeBR + nomeCompleto + ".txt";
+        String nomeCompletoFormatado = nomeCompleto.replace(" ", "");
+        String localDateTimeBRFormatado = localDateTimeBR.replace(":", "-");
+        return localDateTimeBRFormatado + nomeCompletoFormatado + ".txt";
     }
 }
 
