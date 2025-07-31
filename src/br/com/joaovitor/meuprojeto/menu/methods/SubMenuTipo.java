@@ -7,7 +7,7 @@ public class SubMenuTipo {
         while (true) {
             System.out.println("Digite a opção do tipo de Pet: (1) CACHORRO\n(2) GATO\n(3) PASSARO\n(4) REPTIL");
             int escolhaMenu = scanner.nextInt();
-
+            scanner.nextLine();
             if (escolhaMenu == 1){
                 return "CACHORRO";
             } else if (escolhaMenu == 2) {
