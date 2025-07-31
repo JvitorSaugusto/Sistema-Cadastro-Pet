@@ -7,29 +7,43 @@ import java.util.Scanner;
 
 public class SubMenuEndereco {
     public static String perguntarEndereco(Scanner scanner) {
-        while (true) {
+        String numero;
+        String cidade;
+        String rua;
+
+        while (true){
             System.out.println("Qual o Número da casa?");
-            String numero = scanner.nextLine();
+            numero = scanner.nextLine();
+
             boolean numeroValidado = VerifyRegex.verificaSeContemApenasDigitos(numero);
             if (numero.trim().isEmpty()) {
-                return Pet.NAO_INFORMADO;
+                numero = Pet.NAO_INFORMADO;
+                break;
             } else if (!numeroValidado) {
                 System.out.println("Digite apenas numeros ou não digite nada.");
                 continue;
+            }else {
+                break;
             }
+        }
+
+        while (true) {
             System.out.println("Qual a Cidade?");
-            String cidade = scanner.nextLine();
+            cidade = scanner.nextLine();
             if (cidade.trim().isEmpty()){
                 System.out.println("O campo cidade é obrigatório!!!");
                 continue;
             }
+
             System.out.println("Qual a Rua?");
-            String rua = scanner.nextLine();
+            rua = scanner.nextLine();
             if (rua.trim().isEmpty()){
                 System.out.println("O campo rua é obrigatório!!!");
                 continue;
+            }else {
+                break;
             }
-            return numero + "," + rua + "," + cidade;
         }
+        return numero + "," + rua + "," + cidade;
     }
 }
