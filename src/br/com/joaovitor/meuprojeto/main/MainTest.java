@@ -15,13 +15,13 @@ public class MainTest {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
-            System.out.println("Bem vindo ao menu, escolha uma das opções abaixo:");
-            System.out.println("1.Cadastrar um novo pet\n2.Alterar os dados do pet cadastrado\n3.Deletar um pet cadastrado\n" +
-                    "4.Listar todos os pets cadastrados\n5.Listar pets por algum critério (idade, nome, raça)\n6.Sair");
+            System.out.println("Bem vindo ao menu, escolha uma das opções abaixo: \n");
+            System.out.println("1.Cadastrar um novo pet\n2.Listar pets por algum critério (idade, nome, raça)\n" +
+                    "3.Alterar os dados do pet cadastrado\n4.Deletar um pet cadastrado\n5.Sair\n");
 
             String opcaoMenu = scanner.next();
             scanner.nextLine();
-            String resposta;
+            String resposta = "";
 
             try {
                 int opcaoMenuParse = Integer.parseInt(opcaoMenu);
@@ -44,23 +44,25 @@ public class MainTest {
                             resposta = SubMenuIdade.perguntaIdade(scanner);
                         } else if (i == 5) {
                             resposta = SubMenuPeso.perguntaPeso(scanner);
-                        } else {
-                            resposta = scanner.nextLine().trim();
+                        } else if (i == 6){
+                            resposta = SubMenuRaca.perguntarRaca(scanner);
                         }
+
                         chaveMap.add(Integer.toString(i));
                         mapDeRespostas.put(chaveMap.get(i), resposta);
                     }
 
                     List<String> respostas = new ArrayList<>(mapDeRespostas.values());
-                    System.out.println("Adicionando pets na lista");
+                    System.out.println("Adicionando pets na lista \n");
                     PetBox.guardaPet(respostas);
-                    System.out.println("Salvando respostas...");
+                    System.out.println("Salvando respostas...\n");
                     WriterResponseFile.escrevendoRespostas(respostas);
+
                 } else if (opcaoMenuParse == 2) {
-                    System.out.println("...");
-                } else if (opcaoMenuParse <= 0) {
-                    System.out.println("Digite somente numeros válidos");
-                } else if (opcaoMenuParse == 6) {
+                    SubMenu02.listarPetsPorCriterio(scanner);
+                } else if (opcaoMenuParse == 3) {
+                    SubMenu03.alterarPet(scanner);
+                } else if (opcaoMenuParse == 5) {
                     System.err.println("Saindo do sistema!");
                     break;
                 }
