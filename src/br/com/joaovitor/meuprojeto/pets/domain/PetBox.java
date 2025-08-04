@@ -10,6 +10,14 @@ public class PetBox {
         listaDePets.add(PetRegister.petRegister(atributos));
     }
 
+    public static void guardaPetAtualizado(Pet pet){
+        listaDePets.add(pet);
+    }
+
+    public static void removerPetDaBox(Pet pet){
+        listaDePets.remove(pet);
+    }
+
     public static List<Pet> getListaDePets(){
         return listaDePets;
     }
