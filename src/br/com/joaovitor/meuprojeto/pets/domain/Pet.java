@@ -27,7 +27,13 @@ public class Pet {
     }
 
     public String getTodosAtributos(){
-        return (nome + " - " + tipoPet + " - " + sexoPet + " - " + endereco + " - " + idade + " anos" + " - " + peso + " kg"+ " - " + raca).toLowerCase();
+        return ("Nome: "+ nome + " - " +
+                "Tipo: "+ tipoPet + " - " +
+                "Sexo: "+ sexoPet + " - " +
+                "Endereço: "+endereco + " - " +
+                "Idade: "+ idade + " anos" + " - " +
+                "Peso: "+ peso + " kg"+ " - " +
+                "Raça: "+ raca).toLowerCase();
     }
     public String getNome() {
         return nome;
