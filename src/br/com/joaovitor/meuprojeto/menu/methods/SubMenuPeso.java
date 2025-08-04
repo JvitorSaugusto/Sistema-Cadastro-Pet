@@ -7,6 +7,7 @@ import java.util.Scanner;
 public class SubMenuPeso {
     public static String perguntaPeso(Scanner scanner){
         while (true){
+            System.out.println("Digite o peso do seu pet:");
             String pesoInput = scanner.nextLine();
             VerifyRegex.verificaSeEstaVazio(pesoInput);
             try {

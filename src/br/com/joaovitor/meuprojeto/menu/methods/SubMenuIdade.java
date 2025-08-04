@@ -20,9 +20,9 @@ public class SubMenuIdade {
                         String inputIdade = scanner.nextLine().toLowerCase().trim();
                         if (inputIdade.equals("meses")) {
                             idade /= 12.0;
-                            return String.valueOf(idade);
+                            return String.format(String.valueOf(idade), "%.2f");
                         } else if (inputIdade.equals("anos")) {
-                            return String.valueOf(idade);
+                            return String.format(String.valueOf(idade), "%.0f");
                         } else {
                             System.out.println("Selecione uma opção válida.");
                             continue;

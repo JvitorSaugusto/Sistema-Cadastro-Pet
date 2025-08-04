@@ -10,7 +10,7 @@ public class SubMenuNome {
             try {
                 System.out.println("Digite o nome e sobrenome do seu Pet");
                 System.out.println("Nome: ");
-                String nome = scanner.nextLine().toUpperCase().trim();
+                 String nome = scanner.nextLine().toUpperCase().trim();
                 boolean nomeVerificado = VerifyRegex.verificaSeContemApenasLetras(nome);
 
                 if (nomeVerificado && !nome.isEmpty()) {
