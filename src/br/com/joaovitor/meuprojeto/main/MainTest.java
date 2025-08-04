@@ -5,13 +5,11 @@ import br.com.joaovitor.meuprojeto.files.test.FileWriteTest01;
 import br.com.joaovitor.meuprojeto.files.test.WriterResponseFile;
 import br.com.joaovitor.meuprojeto.menu.methods.*;
 import br.com.joaovitor.meuprojeto.pets.domain.PetBox;
-
 import java.util.*;
 
 public class MainTest {
     public static void main(String[] args) {
         FileWriteTest01.writing();
-
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
@@ -53,7 +51,6 @@ public class MainTest {
                     }
 
                     List<String> respostas = new ArrayList<>(mapDeRespostas.values());
-                    System.out.println("Adicionando pets na lista \n");
                     PetBox.guardaPet(respostas);
                     System.out.println("Salvando respostas...\n");
                     WriterResponseFile.escrevendoRespostas(respostas);
@@ -62,8 +59,10 @@ public class MainTest {
                     SubMenu02.listarPetsPorCriterio(scanner);
                 } else if (opcaoMenuParse == 3) {
                     SubMenu03.alterarPet(scanner);
+                } else if (opcaoMenuParse == 4) {
+                    SubMenu04.deletarPet(scanner);
                 } else if (opcaoMenuParse == 5) {
-                    System.err.println("Saindo do sistema!");
+                    System.out.println("Saindo do sistema!");
                     break;
                 }
             } catch (NumberFormatException e) {
