@@ -1,5 +1,12 @@
 package br.com.joaovitor.meuprojeto.files.test;
 
+import br.com.joaovitor.meuprojeto.utils.WriteInFiles;
+
+import javax.swing.*;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -7,6 +14,7 @@ public class DeletarPerguntas {
     public static void deleteExtra(Scanner scanner) {
         List<String> todasAsperguntasNumeradas = BoxDePerguntas.getListaDePerguntasNumeradas();
         List<String> todasAsperguntas = BoxDePerguntas.getListaDePerguntas();
+        File file = new File("formulario.txt");
 
         while (true) {
             todasAsperguntasNumeradas = BoxDePerguntas.getListaDePerguntasNumeradas();
@@ -35,9 +43,16 @@ public class DeletarPerguntas {
 
                 if (confirmarDeletar.equals("Y")){
                     BoxDePerguntas.deletarPergunta(indicePerguntaCorrigido);
-                    break;
                 } else if (confirmarDeletar.equals("N")) {
                     continue;
+                }
+
+                try (FileWriter fw = new FileWriter(file);
+                     BufferedWriter bw = new BufferedWriter(fw)) {
+                    WriteInFiles.escreverPulandoLinha(BoxDePerguntas.getListaDePerguntas(), bw);
+                    bw.flush();
+                } catch (IOException e) {
+                    System.err.println("Erro:" + e.getMessage());
                 }
             }
         }
