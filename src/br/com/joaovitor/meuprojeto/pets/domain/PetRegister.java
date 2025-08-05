@@ -1,7 +1,5 @@
 package br.com.joaovitor.meuprojeto.pets.domain;
 
-import br.com.joaovitor.meuprojeto.main.MainTest;
-
 import java.util.List;
 
 public class PetRegister {

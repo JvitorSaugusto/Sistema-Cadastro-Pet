@@ -1,5 +1,7 @@
 package br.com.joaovitor.meuprojeto.files.test;
 
+import br.com.joaovitor.meuprojeto.utils.WriteInFiles;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
@@ -29,7 +31,7 @@ public class WriterResponseFile {
 
         try (FileWriter fw = new FileWriter(file);
              BufferedWriter bw = new BufferedWriter(fw)) {
-            FileWriteTest01.escreverPulandoLinha(respostas, bw);
+            WriteInFiles.escreverPulandoLinha(respostas, bw);
             bw.flush();
         } catch (IOException e) {
             System.err.println("Erro:" + e.getMessage());

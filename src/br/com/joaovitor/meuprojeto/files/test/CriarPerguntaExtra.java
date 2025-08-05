@@ -6,19 +6,21 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.List;
+import java.util.Scanner;
 
-public class FileWriteTest01 {
-    public static void writing() {
-        List<String> perguntas = List.of(new String[]{"Qual o nome e sobrenome do pet?", "Qual o tipo do pet (Cachorro/Gato)?",
-                "Qual o sexo do animal?", "Qual endereço e bairro que ele foi encontrado?",
-                "Qual a idade aproximada do pet?", "Qual o peso aproximado do pet?", "Qual a raça do pet?"});
+public class CriarPerguntaExtra {
+    public static void writingExtra(Scanner scanner) {
+        System.out.println("Digite aqui sua nova pergunta: ");
+        String novaPergunta = scanner.nextLine();
+        BoxDePerguntas.guardaPergunta(novaPergunta);
+
 
         File file = new File("formulario.txt");
         try (FileWriter fw = new FileWriter(file);
              BufferedWriter bw = new BufferedWriter(fw)) {
-            WriteInFiles.escreverPulandoLinha(perguntas, bw);
+            WriteInFiles.escreverPulandoLinha(BoxDePerguntas.getListaDePerguntas(), bw);
             bw.flush();
+            System.out.println("Nova pergunta salva com sucesso!!");
         } catch (IOException e) {
             System.err.println("Erro:" + e.getMessage());
         }

@@ -1,21 +1,19 @@
 package br.com.joaovitor.meuprojeto.main;
 
+import br.com.joaovitor.meuprojeto.files.test.BoxDePerguntas;
 import br.com.joaovitor.meuprojeto.files.test.FileReadingTest01;
-import br.com.joaovitor.meuprojeto.files.test.FileWriteTest01;
 import br.com.joaovitor.meuprojeto.files.test.WriterResponseFile;
 import br.com.joaovitor.meuprojeto.menu.methods.*;
 import br.com.joaovitor.meuprojeto.pets.domain.PetBox;
 import java.util.*;
 
-public class MainTest {
-    public static void main(String[] args) {
-        FileWriteTest01.writing();
-        Scanner scanner = new Scanner(System.in);
+public class MenuPets {
+    public static void mostrarMenuPets(Scanner scanner) {
 
         while (true) {
             System.out.println("Bem vindo ao menu, escolha uma das opções abaixo: \n");
             System.out.println("1.Cadastrar um novo pet\n2.Listar pets por algum critério (idade, nome, raça)\n" +
-                    "3.Alterar os dados do pet cadastrado\n4.Deletar um pet cadastrado\n5.Sair\n");
+                    "3.Alterar os dados do pet cadastrado\n4.Deletar um pet cadastrado\n5.Voltar ao menu principal\n");
 
             String opcaoMenu = scanner.next();
             scanner.nextLine();
@@ -26,7 +24,7 @@ public class MainTest {
                 if (opcaoMenuParse == 1) {
                     Map<String, String> mapDeRespostas = new HashMap<>();
                     List<String> chaveMap = new ArrayList<>();
-                    List<String> perguntas = FileReadingTest01.Reading();
+                    List<String> perguntas = BoxDePerguntas.getListaDePerguntasNumeradas();
 
                     for (int i = 0; i < perguntas.size(); i++) {
                         System.out.println(perguntas.get(i));
@@ -44,6 +42,9 @@ public class MainTest {
                             resposta = SubMenuPeso.perguntaPeso(scanner);
                         } else if (i == 6){
                             resposta = SubMenuRaca.perguntarRaca(scanner);
+                        } else {
+                            System.out.println("Digite sua resposta (EXTRA): ");
+                            resposta = scanner.nextLine();
                         }
 
                         chaveMap.add(Integer.toString(i));

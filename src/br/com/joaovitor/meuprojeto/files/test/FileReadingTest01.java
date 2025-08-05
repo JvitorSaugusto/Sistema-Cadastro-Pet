@@ -14,6 +14,7 @@ public class FileReadingTest01 {
             BufferedReader br = new BufferedReader(fr)) {
             String linha;
             while((linha = br.readLine()) != null){
+                // remover numeros das perguntas
                 perguntas.add(linha);
             }
         } catch (IOException e) {
